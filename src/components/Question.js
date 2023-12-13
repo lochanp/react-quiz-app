@@ -1,13 +1,16 @@
-import React from 'react'
-import Options from './Options'
+import React from 'react';
+import Options from './Options';
+import { useQuizContext } from '../context/QuizContext';
 
-const Question = ({currentQuestion,dispatch,answer}) => {
+const Question = () => {
+  const { questions, dispatch, answer, index } = useQuizContext();
+  const currentQuestion = questions.at(index);
   return (
     <div className=''>
-        <h4>{currentQuestion.question}</h4>
-        <Options dispatch={dispatch} answer={answer} question={currentQuestion} />
+      <h4>{currentQuestion.question}</h4>
+      <Options question={currentQuestion} />
     </div>
-  )
-}
+  );
+};
 
-export default Question
+export default Question;
